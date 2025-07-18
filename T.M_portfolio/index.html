@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <!-- Character encoding for the page -->
+    <meta charset="UTF-8" />
+    <!-- Page title in browser tab -->
+    <title>Portfolio Website</title>
+    <!-- Responsive meta tag for mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Preconnect to Google Fonts for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Poppins font from Google Fonts with multiple weights -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- External stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Animate On Scroll (AOS) CSS library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- FontAwesome icon kit -->
+    <script src="https://kit.fontawesome.com/2e703a41f9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Background movement effect on mouse move -->
+    <script>
+        document.body.addEventListener('mousemove', function(e) {
+          const moveX = (e.clientX / window.innerWidth) * 10;
+          const moveY = (e.clientY / window.innerHeight) * 10;
+          document.body.style.backgroundPosition = `${50 + moveX}% ${50 + moveY}%`;
+        });
+    </script>
+      
+    <!-- Navigation Menu -->
+    <nav>
+      <div class="nav-container">
+        <!-- Logo area with zoom-in animation -->
+        <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
+          <span>Tadiwa</span>
+        </div>
+        <!-- Navigation links with fade-up animation and staggered delays -->
+        <div class="links">
+          <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a href="#home">Home</a></div>
+          <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"><a href="#about">About</a></div>
+          <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><a href="#skills">Skills</a></div>
+          <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400"><a href="#projects">Projects</a></div>
+          <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500"><a href="#contact">Contact</a></div>
+        </div>
+        <!-- Hamburger menu icon for mobile -->
+        <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+      </div>
+
+      <!-- Dropdown menu for smaller screens -->
+      <div class="dropdown" id="dropdown">
+        <div class="links">
+          <!-- Dropdown navigation links -->
+          <a href="#home" onclick="closeDropdown()">Home</a>
+          <a href="#about" onclick="closeDropdown()">About</a>
+          <a href="#skills" onclick="closeDropdown()">Skills</a>
+          <a href="#projects" onclick="closeDropdown()">Projects</a>
+          <a href="#contact" onclick="closeDropdown()">Contact</a>
+          <!-- Cancel icon to close dropdown -->
+          <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Dropdown toggle scripts -->
+    <script>
+      // Show dropdown menu
+      function hamburg() {
+        document.getElementById("dropdown").classList.add("active");
+      }
+
+      // Hide dropdown menu when cancel is clicked
+      function cancel() {
+        document.getElementById("dropdown").classList.remove("active");
+      }
+
+      // Close dropdown when a link is clicked
+      function closeDropdown() {
+        document.getElementById("dropdown").classList.remove("active");
+      }
+    </script>
+
+    <!-- Main Home Section -->
+    <section id="home">
+        <div class="main-container">
+            <!-- Profile image with zoom-out animation -->
+            <div class="image" data-aos="zoom-out" data-aos-duration="3000">
+                <img src="image\Tadiwa.png" alt="Tadiwa" />
+            </div>
+            <!-- Introduction content -->
+            <div class="content">
+                <h1 data-aos="fade-left" data-aos-duration="1500" data-aos-delay="700">
+                    Hey I'm <span>Tadiwa</span>
+                </h1>
+                <!-- Typewriter effect container -->
+                <div class="typewriter" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="900">
+                    I'm a <span class="typewriter-text"></span><span class="cursor">|</span>
+                </div>
+                <p data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1100">
+                  I'm a passionate Junior Software Developer with a strong foundation in Coding, web technologies, and mobile app development. I love solving problems with code and building solutions that make a difference.
+                </p>
+                <!-- Social media icon links -->
+                <div class="social-links">
+                    <a href="https://github.com/Tadiwa-Mapfumo" target="_blank" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1300">
+                      <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="http://linkedin.com/in/tadiwa-mapfumo-8ab3102b1" target="_blank" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1300">
+                      <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:tadiwamapfumo05@gmail.com" target="_blank" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1300">
+                      <i class="fa-brands fa-google"></i>
+                    </a>
+                  </div>
+                  
+                <!-- Hire Me button -->
+                <div class="btn" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="1800">
+                    <a href="hire.html">
+                        <button>Hire me</button>
+                    </a>
+                </div>
+           </div>
+        </div>
+    </section>
+
+    <!-- Typewriter animation script -->
+    <script>
+    const words = ["Developer", "Designer", "Freelancer"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typewriterText = document.querySelector(".typewriter-text");
+
+    function type() {
+        const currentWord = words[wordIndex];
+        if (isDeleting) {
+            typewriterText.textContent = currentWord.substring(0, charIndex--);
+        } else {
+            typewriterText.textContent = currentWord.substring(0, charIndex++);
+        }
+
+        if (!isDeleting && charIndex === currentWord.length + 1) {
+            isDeleting = true;
+            setTimeout(type, 1000);
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            setTimeout(type, 300);
+        } else {
+            setTimeout(type, isDeleting ? 50 : 100);
+        }
+    }
+    type();
+    </script>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="content">
+        <!-- Section title -->
+        <div class="title" data-aos="fade-up" data-aos-duration="1500"><span>About Me</span></div>
+        <div class="about-details">
+          <!-- Left side image -->
+          <div class="left" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="200">
+            <img src="image/main.jpg" alt="About Image" />
+          </div>
+          <!-- Right side text content -->
+          <div class="right">
+            <div class="topic" data-aos="fade-left" data-aos-duration="1500" data-aos-delay="200">Driven Junior Software Developer</div>
+             <p data-aos="fade-in-center" data-aos-duration="1500" data-aos-delay="700">
+                I'm <strong>Tadiwa Wilson Mapfumo</strong>, a Junior Software Developer based in Germiston, Gauteng. I hold a <strong>Higher Certificate in Software Development</strong> from Eduvos (Bedfordview Campus), where I studied advanced Java, mobile development, databases, and software engineering.
+              </p>
+
+              <p>
+                I specialize in developing both <strong>web</strong> and <strong>mobile applications</strong> using technologies such as Java, JSP, .NET MAUI, and MySQL.
+              </p>
+
+              <p>
+                I am passionate about solving problems, writing clean and efficient code, and working in collaborative environments. I'm currently expanding my expertise through certifications in <strong>cloud computing</strong>, including AWS, Azure, and Kubernetes.
+              </p>
+            <!-- CV download button -->
+            <div class="button" data-aos="zoom-in-right" data-aos-duration="1500" data-aos-delay="400">
+              <button onclick="window.open('Mapfumo_Resume.pdf')">Download CV</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="content">
+          <!-- Section title -->
+          <div class="title" data-aos="fade-up" data-aos-duration="1200"><span>My Skills</span></div>
+          <div class="skills-details">
+            <div class="text">
+              <div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="200">Skills Reflect My Journey</div>
+              <p data-aos="fade-right" data-aos-duration="1200" data-aos-delay="400">
+                I have a solid foundation in software development gained through academic projects, personal projects and hands-on experience. I'm always learning, and I enjoy applying my skills to real-world challenges — from building web apps with Java to creating cross-platform mobile apps with .NET MAUI.
+              </p>
+              <div class="experience">
+                <div class="num">3</div>
+                <div class="exp">Years of <br />Practical Experience</div>
+              </div>
+            </div>
+            <!-- Skills progress boxes -->
+            <div class="boxes">
+              <div class="box"><div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="150">HTML</div><div class="per" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">85%</div></div>
+              <div class="box"><div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="150">CSS</div><div class="per" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">80%</div></div>
+              <div class="box"><div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="150">JavaScript</div><div class="per" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">65%</div></div>
+              <div class="box"><div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="150">Java</div><div class="per" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">80%</div></div>
+              <div class="box"><div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="150">JSP & Servlets</div><div class="per" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">75%</div></div>
+              <div class="box"><div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="150">.NET MAUI</div><div class="per" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">70%</div></div>
+              <div class="box"><div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="150">C#</div><div class="per" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">70%</div></div>
+              <div class="box"><div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="150">MySQL</div><div class="per" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">85%</div></div>
+              <div class="box"><div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="150">SQL</div><div class="per" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">80%</div></div>
+              <div class="box"><div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="150">Python</div><div class="per" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">60%</div></div>
+              <div class="box"><div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="150">PHP</div><div class="per" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">50%</div></div>
+              <div class="box"><div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="150">Linux & Windows</div><div class="per" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">80%</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="content">
+          <!-- Section title -->
+          <div class="title" data-aos="fade-up" data-aos-duration="1200"><span>My Projects</span></div>
+          <div class="boxes">
+            <!-- Project cards with icons and descriptions -->
+            <div class="box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
+              <div class="icon"><i class="fas fa-user-circle"></i></div>
+              <div class="topic">Portfolio Website</div>
+              <p>Designed and developed this interactive portfolio using HTML, CSS, JavaScript, and AOS animation. Features responsive layout, typewriter effect, and smooth transitions to showcase my work.</p>
+            </div>
+            <div class="box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+              <div class="icon"><i class="fas fa-mobile"></i></div>
+              <div class="topic">Mobile Banking App</div>
+              <p>Built a .NET MAUI mobile app for Sisonke Bank that enables account creation, login, viewing balances, and internal transfers. Used C#, SQLite, and implemented secure validation.</p>
+            </div>
+            <div class="box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+              <div class="icon"><i class="fas fa-comments"></i></div>
+              <div class="topic">Forum Website</div>
+              <p>Developed a Java-based web forum using JSP, Servlets, and MySQL. Includes features like user registration, posting, and commenting, hosted on Apache Tomcat with a clean UI.</p>
+            </div>
+            <div class="box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
+              <div class="icon"><i class="fas fa-gavel"></i></div>
+              <div class="topic">Antique Auction System</div>
+              <p>Created a bidding platform where users can register, place bids on antiques, and manage product listings. Built with Java, JSP, MySQL, and CSS with elegant visual transitions.</p>
+            </div>
+            <div class="box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
+              <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+              <div class="topic">Student Marksheet System</div>
+              <p>Developed a desktop Java application to manage student records, calculate averages, and display results. Included file handling, validation, and an intuitive interface for WestView College.</p>
+            </div>
+            <div class="box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+              <div class="icon"><i class="fas fa-pizza-slice"></i></div>
+              <div class="topic">Pizza Ordering App</div>
+              <p>Created a pizza ordering system that lets users choose pizzas, customize toppings, and calculate total price. Developed using Java with a GUI and object-oriented structure for order management.</p>
+            </div>
+            <div class="box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="700">
+              <div class="icon"><i class="fas fa-database"></i></div>
+              <div class="topic">Library Management System</div>
+              <p>Built a full-stack system using Java and MySQL to manage books, users, and borrowing records. Includes CRUD operations, search functionality, and database normalization techniques.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="content">
+          <!-- Section title -->
+          <div class="title" data-aos="fade-up" data-aos-duration="1500">
+            <span>Contact Me</span>
+          </div>
+          <div class="text">
+            <div class="topic" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="200">
+              Have Any Project?
+            </div>
+            <p>I'm open to exciting new opportunities and collaborations. Whether it's a freelance project, internship, or full-time role, feel free to reach out!</p>
+            <!-- Button toggles the visibility of contact info -->
+            <div class="button" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="400">
+              <button onclick="toggleContactInfo()">Let's Chat</button>
+            </div>
+            <!-- Contact info initially hidden, toggled by button -->
+            <div class="contact-info" id="contact-info">
+              <p><i class="fas fa-envelope"></i> <a href="mailto:tadiwamapfumo@gmail.com">tadiwamapfumo@gmail.com</a></p>
+              <p><i class="fas fa-phone"></i> <a href="tel:+27761234567">+27 76 123 4567</a></p>
+              <p><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/tadiwamapfumo" target="_blank">Tadiwa Mapfumo</a></p>
+              <p><i class="fas fa-map-marker-alt"></i> Johannesburg, South Africa</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Initialize AOS animations -->
+      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+      <script>
+        AOS.init({ offset: 0 });
+      
+        // Toggles contact info visibility
+        function toggleContactInfo() {
+          const contactInfo = document.getElementById("contact-info");
+          contactInfo.classList.toggle("show");
+        }
+      </script>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="text">
+            <span>Created By <a href="#">Tadiwa Mapfumo</a> |&#169; 2024 All Rights Reserved</span>
+        </div>
+    </footer>
+
+    <!-- Duplicate AOS init script - can be removed to avoid redundancy -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({ offset: 0 });
+    </script>
+
+</body>
+</html>

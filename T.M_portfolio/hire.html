@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Define character encoding -->
+    <meta charset="UTF-8" />
+    <!-- Responsive viewport for mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Page title shown in browser tab -->
+    <title>Hire Me</title>
+    <!-- Link to external CSS stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Section containing the hire me form -->
+    <section class="hire-form-section">
+      <div class="content">
+        <!-- Main heading for the page -->
+        <h1>Hire Me</h1>
+        <!-- Introductory paragraph -->
+        <p>
+          Please fill in the form below and I’ll get back to you as soon as
+          possible.
+        </p>
+
+        <!-- Contact form sends submission data to Formspree for handling -->
+        <form
+          action="https://formspree.io/f/xovdgggl" <!-- Formspree endpoint -->
+          method="POST" <!-- HTTP POST method for submitting data -->
+          enctype="multipart/form-data" <!-- Encoding type to support file uploads (optional here) -->
+          class="hire-form" <!-- CSS class for styling -->
+        >
+          <!-- Full Name input field -->
+          <label>
+            Full Name:
+            <input type="text" name="name" required />
+          </label>
+
+          <!-- Email input field with built-in validation -->
+          <label>
+            Email Address:
+            <input type="email" name="email" required />
+          </label>
+
+          <!-- Project or Job Type text input -->
+          <label>
+            Project/Job Type:
+            <input
+              type="text"
+              name="project/job_type,"  <!-- Note: comma here may cause issues, should be 'project_job_type' or similar -->
+              placeholder="e.g. Web App, Mobile App"
+              required
+            />
+          </label>
+
+          <!-- Multi-line text area for project description -->
+          <label>
+            Project/Job Description:
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+
+          <!-- Submit button to send form data -->
+          <button type="submit">Send Request</button>
+
+          <!-- Link to go back to homepage, styled and centered -->
+          <div style="text-align: center; margin-top: 2vh">
+            <a href="index.html" class="back-home-button">← Back to Home</a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>
